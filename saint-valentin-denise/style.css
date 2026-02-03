@@ -1,0 +1,231 @@
+:root {
+    --primary: #ff4757;
+    --secondary: #2f3542;
+    --bg: #ffeaa7;
+    --white: #ffffff;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg);
+    color: var(--secondary);
+    text-align: center;
+    /* On empêche le scroll par défaut pour les jeux */
+    overflow: hidden; 
+    touch-action: manipulation;
+}
+
+/* Les écrans (Niveaux) */
+section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: var(--bg);
+    z-index: 1;
+    transition: opacity 0.5s;
+}
+
+/* --- CORRECTION POUR QUE CA SCROLL ENFIN --- */
+#screen-final {
+    display: block; /* On enlève le mode flexible qui bloquait */
+    overflow-y: scroll !important; /* On OBLIGE le scroll vertical */
+    height: 100%; /* Prend tout l'écran */
+    padding-top: 40px; /* Espace en haut */
+    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iPhone */
+}
+
+.hidden-screen { 
+    display: none !important; 
+    opacity: 0;
+    z-index: -1;
+}
+
+.active-screen { 
+    display: flex !important; 
+    opacity: 1;
+    z-index: 10;
+}
+
+/* Exception pour l'écran final qui doit être en block pour scroller */
+#screen-final.active-screen {
+    display: block !important;
+}
+
+h1, h2 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+p { font-size: 1.1rem; line-height: 1.5; }
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #c0392b;
+    transition: transform 0.1s;
+    font-family: 'Fredoka One', cursive;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+/* JEU 1 : QUIZ */
+#quiz-container { width: 100%; max-width: 400px; margin: 0 auto; }
+.answers { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.answers button { margin: 5px 0; width: 100%; }
+#question-text { font-weight: bold; font-size: 1.2rem; }
+
+/* JEU 2 : CATCH */
+#game-area-catch {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border: 3px dashed var(--primary);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+    background: rgba(255,255,255,0.5);
+}
+.falling-heart {
+    position: absolute;
+    font-size: 2.5rem;
+    cursor: pointer;
+    animation: popIn 0.3s ease-out;
+    user-select: none;
+}
+h3 { font-size: 2rem; margin: 10px 0; }
+
+/* JEU 3 : MEMORY */
+#memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+.card {
+    width: 70px;
+    height: 70px;
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    color: transparent; 
+    transition: transform 0.3s;
+}
+.card.flipped {
+    background: white;
+    color: black;
+    border: 2px solid var(--primary);
+    transform: rotateY(180deg);
+}
+
+/* JEU 4 : SPAM */
+.progress-container {
+    width: 90%;
+    height: 40px;
+    background: white;
+    border-radius: 20px;
+    border: 4px solid var(--primary);
+    margin: 20px auto; /* Centré */
+    overflow: hidden;
+    position: relative;
+}
+#love-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b81, #ff4757);
+    transition: width 0.1s linear;
+}
+#spam-btn { transform: scale(1.2); }
+
+/* FINAL SCRATCH */
+#container-scratch {
+    position: fixed; /* Fixe pour couvrir tout l'écran */
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50; /* Au dessus de tout */
+}
+canvas {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%; 
+    touch-action: none;
+}
+
+#hidden-content {
+    /* Le contenu caché */
+    width: 100%;
+    opacity: 0;
+    background-color: #fff0f5; /* Le fond rose */
+    padding-bottom: 100px; /* Enorme marge en bas pour pouvoir scroller */
+}
+
+.main-title { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.2rem; 
+    color: #e91e63;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* --- LE POEME (Mieux designé) --- */
+.poem-container { 
+    background: rgba(255,255,255,0.95); 
+    padding: 25px; 
+    border-radius: 20px; 
+    
+    /* Responsive : 85% de largeur sur mobile, max 600px sur PC */
+    width: 85%; 
+    max-width: 600px;
+    
+    /* Centrage */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px; /* Marge pour ne pas couper la fin */
+    
+    font-size: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    /* Texte aligné à gauche pour mobile (plus lisible que justifié) */
+    text-align: left; 
+    line-height: 1.6;
+    color: #2f3542;
+}
+
+.poem-text {
+    margin-bottom: 20px; /* Espace entre les paragraphes */
+    display: block;
+}
+
+.fade-in { opacity: 1 !important; transition: opacity 1s; }
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
