@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pour Denise ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="screen-intro" class="active-screen">
+        <h1>Mission : Saint-Valentin ❤️</h1>
+        <p>Salut Denise.</p>
+        <p>Tu pensais avoir ton cadeau facilement ?<br>Grave erreur.</p>
+        <p>Prouve ton amour à travers 4 épreuves...</p>
+        <button onclick="startGame()">J'accepte le défi !</button>
+    </section>
+
+    <section id="screen-quiz" class="hidden-screen">
+        <h2>Niveau 1 : Mémoire 🧠</h2>
+        <div id="quiz-container">
+            <p id="question-text">Question...</p>
+            <div class="answers">
+                <button onclick="checkAnswer(1)" id="btn-rep1">Réponse A</button>
+                <button onclick="checkAnswer(2)" id="btn-rep2">Réponse B</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="screen-catch" class="hidden-screen">
+        <h2>Niveau 2 : Réflexes 🥷</h2>
+        <p>Attrape 10 cœurs !</p>
+        <h3>Score : <span id="score-catch">0</span> / 10</h3>
+        <div id="game-area-catch"></div>
+    </section>
+
+    <section id="screen-memory" class="hidden-screen">
+        <h2>Niveau 3 : Paires 🧩</h2>
+        <p>Trouve les couples d'émojis !</p>
+        <div id="memory-grid"></div>
+    </section>
+
+    <section id="screen-spam" class="hidden-screen">
+        <h2>Niveau 4 : FORCE 💪</h2>
+        <p>Tapote le bouton rouge VITE pour remplir mon cœur !</p>
+        
+        <div class="progress-container">
+            <div id="love-bar"></div>
+        </div>
+        
+        <button id="spam-btn" onclick="spamLove()">JE T'AIME !</button>
+    </section>
+
+    <section id="screen-final" class="hidden-screen">
+        <div id="container-scratch">
+            <canvas id="scratch-canvas"></canvas>
+        </div>
+            
+        <div id="hidden-content">
+            
+            <h1 class="main-title">BRAVO MON CŒUR ❤️</h1>
+            
+            <div class="poem-container">
+                <p class="poem-text">
+                    Denise, <br>
+                    Tu as survécu aux épreuves, tu mérites ton poème.
+                </p>
+                <p class="poem-text">
+                    Mais avant ça je voudrais te dire une chose parce que madame a republié un tiktok de ce genre de cadeau le 31 janvier il me semble alors que je préparais ce cadeau depuis longtemps bien avant ce tiktok 😒.
+                </p>
+                <p class="poem-text">
+                    Enfin bref revenons aux choses sérieuses. Sache que même à distance ma Denise uhhhhh, tu me fais rire, tu me rends joyeux, tu me rends tellement amoureux de jour en jours.
+                </p>
+                <p class="poem-text">
+                    Grâce à toi ma Denise (je te l’ai toujours dit mais tu m’as fait devenir un garçon plus mature, plus droit dans ma vie), grâce à toi j’ai compris le sens de la vie. Tout comme toi, moi aussi c’est la première fois que je vis ces choses-là, ces souvenirs-là avec toi mon cœur et tout ça c’est grâce à toi car tu es tellement une personne adorable aussi mature que tu penses être, que tu m’as fait revenir dans le bon chemin mon bébé 🥹❤️.
+                </p>
+                <p class="poem-text">
+                    On est que le 14 février et dans 2j ça va faire 6 mois qu’on est en couple Denise maa tu t’en rends compte ? La moitié d’un an quand même c’est ouf mais ce n’est pas beaucoup car on va bien tenir jusqu’à la fin de la vie et pour cela mon cœur j’aurai besoin de toi et de ta confiance ❤️.
+                </p>
+                <p class="poem-text">
+                    Ces 6 mois on a eu beaucoup d’expressions, on est passé par toutes les phases : la tristesse, l’amour, la taquinerie, les sandaï, les disputes, les malentendus... mais ces 6 mois-là on a réussi à tenir et continuer notre chemin d’amour et tout cela c’est grâce à toi mon cœur 🥹.
+                </p>
+                <p class="poem-text">
+                    Comme tu peux le voir je t’ai fait ce site pas parce que tu l'as republié, tout simplement parce qu'en tant qu’une relation à distance je me suis dit que t’allais aimer ce petit cadeau personnalisé et comme je pouvais le voir tu l’as republié donc j’ai confiance que cette surprise t'a plu 😌❤️.
+                </p>
+                <p class="poem-text">
+                    Saches que quoi qu’il arrive mon amour je t’aime et je t’aimerai plus que tout, jamais je ne te laisserai dans la galère car je suis tout autant attaché à toi que tu le penses mon bébé 🥹🥹🥹❤️❤️❤️.
+                </p>
+                <p class="poem-text" style="text-align: center; font-weight: bold; margin-top: 30px;">
+                    Joyeuse première Saint-Valentin mon amour. ❤️<br>
+                    Aatish. 💐
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
